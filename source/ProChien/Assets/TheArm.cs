@@ -23,12 +23,12 @@ public class TheArm : MonoBehaviour {
             Pulling = true;
             iTween.ShakePosition( GameObject.Find( "chi" ), ( new Vector3( 0.2f, 0.2f ) / 100f ) * MicControlC.SoundVolumeValue / 2, 1 );
 
-            if ( MicControlC.SoundVolumeValue > 300 ) {
+            if ( MicControlC.SoundVolumeValue > 200 ) {
                 GameObject.Find( "Fireworks" ).GetComponent<ParticleSystem>().Emit( 10 );
 
             }
 
-            if ( MicControlC.SoundVolumeValue > 500 ) {
+            if ( MicControlC.SoundVolumeValue > 400 ) {
                 Explosion.SetActive( true );
             }
 
