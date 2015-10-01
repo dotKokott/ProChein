@@ -15,17 +15,23 @@ public class TheScore : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if ( !arm.Pulling && Input.GetKeyDown( KeyCode.Space ) ) {
-            iTween.ValueTo( gameObject, iTween.Hash(
-                "from", 0, "to", MicControlC.SoundVolumeValue,
-                "time", 1, "onupdate", "updatescore",
-                "oncomplete", "scorecomplete",
-                "easetype", iTween.EaseType.easeOutCubic ) );
-            iTween.ShakePosition( gameObject, new Vector3( 5, 5 ), 1f );
-        }
+        //if ( !arm.Pulling && Input.GetKeyDown( KeyCode.Space ) ) {
+        //    Debug.Log( "asdfas" );
+        //}
+    }
+
+    public void doit() {
+        iTween.ValueTo( gameObject, iTween.Hash(
+            "from", 0, "to", MicControlC.SoundVolumeValue,
+            "time", 1, "onupdate", "updatescore",
+            "oncomplete", "scorecomplete",
+            "easetype", iTween.EaseType.easeOutCubic ) );
+        iTween.ShakePosition( gameObject, new Vector3( 5, 5 ), 1f );
+
     }
 
     void updatescore( float value ) {
+        Debug.Log( "woooh" );
         text.text = Mathf.RoundToInt( value ).ToString();
     }
 
