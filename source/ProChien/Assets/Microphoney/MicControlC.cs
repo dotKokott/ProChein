@@ -44,15 +44,14 @@ public class MicControlC : MonoBehaviour {
     }
 
     float prev;
-    float curr;
     public static float SoundVolumeValue = 0;
 
     void Update() {
         audio.volume = ( sourceVolume / 100 );
 
-        curr = GetAveragedVolume() * sensitivity * ( sourceVolume / 10 );
-        SoundVolumeValue = Mathf.Lerp( prev, curr, 0.5f );
-        prev = curr;
+        SoundVolumeValue = Mathf.Lerp( prev, 
+            GetAveragedVolume() * sensitivity * ( sourceVolume / 10 ), 0.5f );
+        prev = SoundVolumeValue;
 
         loudness = GetAveragedVolume() * sensitivity * ( sourceVolume / 10 );
 
