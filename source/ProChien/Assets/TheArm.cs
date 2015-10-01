@@ -27,7 +27,7 @@ public class TheArm : MonoBehaviour {
                 
             }
 
-            if (MicControlC.SoundVolumeValue > 400) {
+            if (MicControlC.SoundVolumeValue > 500) {
                 Explosion.SetActive(true);
             }
 
