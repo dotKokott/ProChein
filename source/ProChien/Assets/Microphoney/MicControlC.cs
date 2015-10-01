@@ -35,7 +35,7 @@ public class MicControlC : MonoBehaviour {
     public void StartMicrophone() {
         audio.clip = Microphone.Start( selectedDevice, true, 10, maxFreq );
         while ( !( Microphone.GetPosition( selectedDevice ) > 0 ) ) { } 
-        //audio.Play();
+        audio.Play();
     }
 
     public void StopMicrophone() {
