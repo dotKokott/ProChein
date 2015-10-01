@@ -9,6 +9,8 @@ public class TheArm : MonoBehaviour {
 
     public AudioClip DumbbellSound;
 
+    public GameObject Explosion;
+
 	void Start () {
         control = Camera.main.GetComponent<MicControlC>();
 	}
@@ -22,6 +24,11 @@ public class TheArm : MonoBehaviour {
 
             if (MicControlC.SoundVolumeValue > 200) {
                 GameObject.Find("Fireworks").GetComponent<ParticleSystem>().Emit(10);
+                
+            }
+
+            if (MicControlC.SoundVolumeValue > 400) {
+                Explosion.SetActive(true);
             }
 
             Camera.main.GetComponent<AudioSource>().PlayOneShot(DumbbellSound);
@@ -39,5 +46,6 @@ public class TheArm : MonoBehaviour {
         yield return new WaitForSeconds(time);
 
         Pulling = false;
+        Explosion.SetActive(false);
     }
 }
