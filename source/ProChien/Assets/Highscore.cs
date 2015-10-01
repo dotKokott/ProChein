@@ -1,33 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Highscore : MonoBehaviour {
 
     private Text text;
 
-    int one = -1;
-    int two = -1;
-    int three = -1;
+    List<int> scores = new List<int>();
 
     public void Add( int value ) {
-        if ( value > one ) {
-            one = value;
-            SetText();
-            return;
-        }
-
-        if ( value > two ) {
-            two = value;
-            SetText();
-            return;
-        }
-
-        if ( value > three ) {
-            three = value;
-            SetText();
-            return;
-        }
+        scores.Add( value );
+        scores.Sort();
+        scores.Reverse();
+        SetText();
     }
 
     private void SetText() {
@@ -35,13 +21,16 @@ public class Highscore : MonoBehaviour {
 @"#1: {0}
 #2: {1}
 #3: {2}",
-        one == -1 ? "..." : one.ToString(),
-        two == -1 ? "..." : two.ToString(),
-        three == -1 ? "..." : three.ToString() );
+        scores[0] == -1 ? "..." : scores[0].ToString(),
+        scores[1] == -1 ? "..." : scores[1].ToString(),
+        scores[2] == -1 ? "..." : scores[2].ToString() );
     }
 
     // Use this for initialization
     void Start() {
         text = GetComponent<Text>();
+        scores.Add( -1 );
+        scores.Add( -1 );
+        scores.Add( -1 );
     }
 }
